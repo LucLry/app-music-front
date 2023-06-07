@@ -1,0 +1,38 @@
+.card-artist {
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 15px 30px;
+  box-shadow: rgb(35, 35, 35) 4px 4px 20px;
+  background-color: #73348c;
+  color: #adf65f;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+}
+
+.card-body {
+}
+
+.row_genre {
+}
+
+.separator {
+  margin: 10px 0;
+  height: 3px;
+  width: 100%;
+  background-color: #adf65f;
+}
+
+img {
+  border-radius: 50%;
+  height: 120px;
+}
