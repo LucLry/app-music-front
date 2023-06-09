@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { HttpClientModule } from '@angular/common/http';
+
 import { CardArtistComponent } from './card-artist/card-artist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardArtistContainerComponent } from './card-artist-container/card-artist-container.component';
@@ -11,14 +14,15 @@ import { CardArtistContainerComponent } from './card-artist-container/card-artis
   declarations: [
     AppComponent,
     CardArtistComponent,
-    CardArtistContainerComponent
+    CardArtistContainerComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
