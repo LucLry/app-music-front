@@ -1,16 +1,18 @@
 <div style="display: flex; justify-content: center; width: 100%">
   <div class="card-artist-container">
-    <button (click)="logResponse()">Log this</button>
-    <p style="color: greenyellow">{{ response }}</p>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
-    <app-card-artist></app-card-artist>
+    <app-card-artist
+      *ngFor="let artist of listArtists"
+      [artist]="artist"
+    ></app-card-artist>
+
+    <app-card-artist
+      [artist]="{
+        id: 'dummy',
+        name: 'heelloooooooooi ooooooooo',
+        genres: ['rock', 'rock prog'],
+        imageUrl:
+          'https://i.scdn.co/image/ab6761610000e5eba7bfd7835b5c1eee0c95fa6e'
+      }"
+    ></app-card-artist>
   </div>
 </div>

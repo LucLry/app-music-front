@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Artist } from '../models/card-artist.model';
 
 @Component({
   selector: 'app-card-artist',
@@ -6,12 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-artist.component.scss'],
 })
 export class CardArtistComponent {
-  list_genre = [
-    'beatlesque',
-    'british invasion',
-    'classic rock',
-    'merseybeat',
-    'psychedelic rock',
-    'rock',
-  ];
+  @Input() artist!: Artist;
 }

@@ -6,12 +6,22 @@
   box-shadow: rgb(35, 35, 35) 4px 4px 20px;
   background-color: #73348c;
   color: #adf65f;
+  height: 100%;
+  max-width: 190px;
+
+  img {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+  }
 }
 
 .card-header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 
   h1 {
     font-weight: 500;
@@ -30,9 +40,4 @@
   height: 3px;
   width: 100%;
   background-color: #adf65f;
-}
-
-img {
-  border-radius: 50%;
-  height: 120px;
 }

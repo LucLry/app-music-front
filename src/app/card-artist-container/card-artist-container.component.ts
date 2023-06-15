@@ -10,14 +10,25 @@ import { Observable } from 'rxjs';
 export class CardArtistContainerComponent implements OnInit {
   constructor(private cardArtistService: CardArtistService) {}
 
-  response!: any;
+  listArtists!: any;
   ngOnInit(): void {
     this.cardArtistService
-      .getArtistById('3THqHCN7gq2Z9hLleof9uv,1dfeR4HaWDbWqFHLkxsg1d')
-      .subscribe((res) => (this.response = res));
+      .getArtistById(
+        '3WrFJ7ztbogyGnTHbHJFl2,4tZwfgrHOc3mvqYlEYSvVi,1dfeR4HaWDbWqFHLkxsg1d,2m62cc253Xvd9qYQ8d2X3d'
+      )
+      .subscribe((res) => (this.listArtists = res));
   }
 
   logResponse() {
-    console.log('type : ', typeof this.response, ' response', this.response);
+    console.log(
+      'type : ',
+      typeof this.listArtists,
+      ' listArtists',
+      this.listArtists,
+      '\n artist => type : ',
+      typeof this.listArtists[0],
+      ' object : ',
+      this.listArtists[0]
+    );
   }
 }

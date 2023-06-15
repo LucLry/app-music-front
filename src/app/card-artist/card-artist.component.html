@@ -1,11 +1,11 @@
 <div class="card-artist">
   <div class="card-header">
-    <img src="../../assets/beatles_picture.jpg" alt="The Beatles" />
-    <h1>The Beatles</h1>
+    <img [src]="artist.imageUrl" [alt]="artist.name" />
+    <h1>{{ artist.name }}</h1>
   </div>
   <div class="separator"></div>
   <div class="card-body">
-    <div *ngFor="let genre of list_genre" class="row_genre">
+    <div *ngFor="let genre of artist.genres" class="row_genre">
       <div>{{ genre }}</div>
       <!-- <button>add</button> -->
     </div>
