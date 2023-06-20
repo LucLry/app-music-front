@@ -8,5 +8,5 @@ import { Artist } from '../models/card-artist.model';
 })
 export class CardArtistComponent {
   @Input() artist!: Artist;
-  isHidden: boolean = false;
+  isHovered: boolean = false;
 }
