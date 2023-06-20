@@ -1,6 +1,6 @@
 export class Artist {
-  id!: String;
-  name!: String;
-  genres!: String[];
-  imageUrl!: String;
+  id!: string;
+  name!: string;
+  genres!: string[];
+  imageUrl!: string;
 }

@@ -1,13 +1,52 @@
-<div class="card-artist">
+<div
+  class="card-artist"
+  (mouseenter)="isHidden = !isHidden"
+  (mouseleave)="isHidden = !isHidden"
+>
   <div class="card-header">
     <img [src]="artist.imageUrl" [alt]="artist.name" />
-    <h1>{{ artist.name }}</h1>
+    <h2 [matTooltip]="artist.name">{{ artist.name }}</h2>
   </div>
-  <div class="separator"></div>
-  <div class="card-body">
-    <div *ngFor="let genre of artist.genres" class="row_genre">
-      <div>{{ genre }}</div>
-      <!-- <button>add</button> -->
+  <div *ngIf="isHidden">
+    <div class="separator"></div>
+    <div class="card-body">
+      <div *ngFor="let genre of artist.genres">
+        <div>{{ genre }}</div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- <div class="card-artist">
+  <div class="card-header">
+    <img [src]="artist.imageUrl" [alt]="artist.name" />
+    <h2 [matTooltip]="artist.name">{{ artist.name }}</h2>
+  </div>
+  <div class="separator"></div>
+  <div class="card-body">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header> </mat-expansion-panel-header>
+        <div class="separator"></div>
+        <div *ngFor="let genre of artist.genres">
+          <div>{{ genre }}</div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div> -->
+
+<mat-accordion>
+  <mat-expansion-panel class="panel-artist">
+    <mat-expansion-panel-header class="panel-header">
+      <mat-panel-title class="panel-header-content">
+        <img [src]="artist.imageUrl" [alt]="artist.name" />
+        <h2 [matTooltip]="artist.name">{{ artist.name }}</h2>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="separator"></div>
+    <div *ngFor="let genre of artist.genres">
+      <div>{{ genre }}</div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

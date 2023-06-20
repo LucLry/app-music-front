@@ -10,6 +10,9 @@ import { CardArtistComponent } from './card-artist/card-artist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardArtistContainerComponent } from './card-artist-container/card-artist-container.component';
 
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +24,8 @@ import { CardArtistContainerComponent } from './card-artist-container/card-artis
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatTooltipModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
