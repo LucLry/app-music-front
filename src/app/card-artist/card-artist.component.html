@@ -1,13 +1,16 @@
 <div
   class="card-artist"
-  (mouseenter)="isHovered = !isHovered"
-  (mouseleave)="isHovered = !isHovered"
+  (mouseenter)="toggleHover()"
+  (mouseleave)="toggleHover()"
+  [@inOutAnimation]
 >
   <div class="card-header">
     <img [src]="artist.imageUrl" [alt]="artist.name" />
-    <h2 [ngClass]="{ 'not-hovered': !isHovered }">{{ artist.name }}</h2>
+    <h2 [ngClass]="{ 'not-hovered': !isCardHovered }">
+      {{ artist.name }}
+    </h2>
   </div>
-  <div *ngIf="isHovered">
+  <div *ngIf="isCardHovered">
     <div class="separator"></div>
     <div class="card-body">
       <div *ngFor="let genre of artist.genres">

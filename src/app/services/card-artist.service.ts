@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class CardArtistService {
   constructor(private http: HttpClient) {}
 
+  updateLayout: boolean = false;
+
   getArtistById(ArtistIds: string): Observable<any> {
     return this.http.get<any>(`http://localhost:8080/getArtist`, {
       params: new HttpParams().set('spotifyArtistIdList', ArtistIds),

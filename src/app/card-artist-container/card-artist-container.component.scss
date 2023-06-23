@@ -1,12 +1,7 @@
 .card-artist-container {
   max-width: 900px;
-  max-height: 1000px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
-app-card-artist {
-  margin-bottom: 10px;
+.masonry-item {
+  transition: top 0.4s ease-in-out, left 0.4s ease-in-out;
 }
