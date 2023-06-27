@@ -52,13 +52,19 @@ export class CardArtistContainerComponent implements OnInit {
         },
       });
 
+    const testArray: number[] = [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+    ];
+    const testColumns: number = 3;
     // PROBLEME ICI
+    console.log('reorder : ', this.reorderArray(testArray, testColumns));
+    console.log(
+      'split array : ',
+      this.splitArrayIntoChunks(testArray, testColumns)
+    );
     console.log(
       'reorder and split : ',
-      this.reorderAndSplit(
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
-        3
-      )
+      this.reorderAndSplit(testArray, testColumns)
     );
   }
 
@@ -68,31 +74,32 @@ export class CardArtistContainerComponent implements OnInit {
 
     // get the remainder of the euclidean division of array size by nb of columns
     const remainder: number = arr.length % nbColumns;
-
+    const quotient: number = (arr.length - remainder) / nbColumns;
     let remainder_counter: number = 0;
 
     console.log('input array ', arr);
 
-    for (let i = 0; i < arr.length - remainder; i += nbColumns) {
+    for (let i = 0; i < arr.length - remainder; i += quotient) {
+      console.log(' i : ', i);
       let chunk: any[] = [];
       if (remainder > 0) {
         if (i === 0) {
-          chunk = arr.slice(i, i + nbColumns + 1);
+          chunk = arr.slice(i, i + quotient + 1);
           remainder_counter++;
         } else if (remainder_counter < remainder) {
           chunk = arr.slice(
             i + remainder_counter,
-            i + nbColumns + remainder_counter + 1
+            i + quotient + remainder_counter + 1
           );
           remainder_counter++;
         } else {
           chunk = arr.slice(
             i + remainder_counter,
-            i + nbColumns + remainder_counter
+            i + quotient + remainder_counter
           );
         }
       } else {
-        chunk = arr.slice(i, i + nbColumns);
+        chunk = arr.slice(i, i + quotient);
       }
 
       chunkLists.push(chunk);
