@@ -47,32 +47,83 @@ export class CardArtistContainerComponent implements OnInit {
           this.listArtists = res;
           this.splittedList = this.reorderAndSplit(res, this.numberOfCols);
         },
+        error: (e) => {
+          console.log('error : ', e);
+        },
       });
+
+    // PROBLEME ICI
+    console.log(
+      'reorder and split : ',
+      this.reorderAndSplit(
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+        3
+      )
+    );
   }
 
-  reorderAndSplit(arr: any[], columns: number): any[][] {
-    // re-order the array so the "cards" read left-right
-    // cols === CSS column-count value
+  splitArrayIntoChunks(arr: any[], nbColumns: number): any[][] {
+    const chunkLists: any[][] = [];
+    // split the list into sublist, 1 for every columns
 
-    const outSubList: any[][] = [];
-    const cols = columns;
-    const fullList: any[] = [];
+    // get the remainder of the euclidean division of array size by nb of columns
+    const remainder: number = arr.length % nbColumns;
+
+    let remainder_counter: number = 0;
+
+    console.log('input array ', arr);
+
+    for (let i = 0; i < arr.length - remainder; i += nbColumns) {
+      let chunk: any[] = [];
+      if (remainder > 0) {
+        if (i === 0) {
+          chunk = arr.slice(i, i + nbColumns + 1);
+          remainder_counter++;
+        } else if (remainder_counter < remainder) {
+          chunk = arr.slice(
+            i + remainder_counter,
+            i + nbColumns + remainder_counter + 1
+          );
+          remainder_counter++;
+        } else {
+          chunk = arr.slice(
+            i + remainder_counter,
+            i + nbColumns + remainder_counter
+          );
+        }
+      } else {
+        chunk = arr.slice(i, i + nbColumns);
+      }
+
+      chunkLists.push(chunk);
+    }
+
+    return chunkLists;
+  }
+
+  reorderArray(arr: any[], columns: number): any[] {
+    const reorderedArray: any[] = [];
     let col = 0;
-    while (col < cols) {
-      for (let i = 0; i < arr.length; i += cols) {
+    while (col < columns) {
+      for (let i = 0; i < arr.length; i += columns) {
         let _val = arr[i + col];
-        if (_val !== undefined) fullList.push(_val);
+        if (_val !== undefined) reorderedArray.push(_val);
       }
       col++;
     }
+    return reorderedArray;
+  }
+
+  reorderAndSplit(arr: any[], columns: number): any[][] {
+    // re-order the array so the "cards" order is left-right
+    // cols === CSS column-count value
+    const reorderedArray: any[] = this.reorderArray(arr, columns);
 
     // split the list into sublist, 1 for every columns
-
-    for (let i = 0; i < fullList.length; i += cols) {
-      const chunk = fullList.slice(i, i + cols);
-      outSubList.push(chunk);
-    }
-    console.log('reorderAndSplit ', outSubList);
-    return outSubList;
+    const reorderedAndSplittedArray = this.splitArrayIntoChunks(
+      reorderedArray,
+      columns
+    );
+    return reorderedAndSplittedArray;
   }
 }

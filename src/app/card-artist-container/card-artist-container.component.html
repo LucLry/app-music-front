@@ -1,18 +1,8 @@
-<div class="card-artist-container">
-  <ngx-masonry [updateLayout]="cardArtistService.updateLayout">
-    <div ngxMasonryItem class="masonry-item" *ngFor="let artist of listArtists">
-      <app-card-artist [artist]="artist"></app-card-artist>
-    </div>
-  </ngx-masonry>
+<div style="display: flex; justify-content: center; width: 100%">
+  <div class="card-artist-container" *ngFor="let sublist of splittedList">
+    <app-card-artist
+      *ngFor="let artist of sublist"
+      [artist]="artist"
+    ></app-card-artist>
+  </div>
 </div>
-
-<!-- <div class="card-artist-container">
-  <ngx-masonry
-    [updateLayout]="cardArtistService.updateLayout"
-    *ngFor="let sublist of splittedList"
-  >
-    <div ngxMasonryItem class="masonry-item" *ngFor="let artist of sublist">
-      <app-card-artist [artist]="artist"></app-card-artist>
-    </div>
-  </ngx-masonry>
-</div> -->
