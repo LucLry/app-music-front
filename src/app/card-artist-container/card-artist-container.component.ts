@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardArtistService } from '../services/card-artist.service';
 
-import { NgxMasonryOptions } from 'ngx-masonry';
+
 import { Artist } from '../models/card-artist.model';
 
 @Component({
@@ -16,11 +16,6 @@ export class CardArtistContainerComponent implements OnInit {
   listArtistsId: string[] = [];
   listArtists!: Artist[];
   splittedList!: Artist[][];
-
-  public cardArtistMasonryOptions: NgxMasonryOptions = {
-    horizontalOrder: true,
-    columnWidth: '.masonry-item',
-  };
 
   ngOnInit(): void {
     this.listArtistsId = this.listArtistsId.concat([
@@ -51,21 +46,6 @@ export class CardArtistContainerComponent implements OnInit {
           console.log('error : ', e);
         },
       });
-
-    const testArray: number[] = [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-    ];
-    const testColumns: number = 3;
-    // PROBLEME ICI
-    console.log('reorder : ', this.reorderArray(testArray, testColumns));
-    console.log(
-      'split array : ',
-      this.splitArrayIntoChunks(testArray, testColumns)
-    );
-    console.log(
-      'reorder and split : ',
-      this.reorderAndSplit(testArray, testColumns)
-    );
   }
 
   splitArrayIntoChunks(arr: any[], nbColumns: number): any[][] {
@@ -76,8 +56,6 @@ export class CardArtistContainerComponent implements OnInit {
     const remainder: number = arr.length % nbColumns;
     const quotient: number = (arr.length - remainder) / nbColumns;
     let remainder_counter: number = 0;
-
-    console.log('input array ', arr);
 
     for (let i = 0; i < arr.length - remainder; i += quotient) {
       console.log(' i : ', i);
@@ -122,12 +100,13 @@ export class CardArtistContainerComponent implements OnInit {
   }
 
   reorderAndSplit(arr: any[], columns: number): any[][] {
+    console.log('input array ', arr);
     // re-order the array so the "cards" order is left-right
     // cols === CSS column-count value
     const reorderedArray: any[] = this.reorderArray(arr, columns);
 
     // split the list into sublist, 1 for every columns
-    const reorderedAndSplittedArray = this.splitArrayIntoChunks(
+    const reorderedAndSplittedArray : any[][] = this.splitArrayIntoChunks(
       reorderedArray,
       columns
     );

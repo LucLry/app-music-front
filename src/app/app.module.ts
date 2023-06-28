@@ -13,7 +13,6 @@ import { CardArtistContainerComponent } from './card-artist-container/card-artis
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 
-import { NgxMasonryModule } from 'ngx-masonry';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +26,6 @@ import { NgxMasonryModule } from 'ngx-masonry';
     BrowserAnimationsModule,
     MatTooltipModule,
     MatExpansionModule,
-    NgxMasonryModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
