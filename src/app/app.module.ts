@@ -12,12 +12,14 @@ import { CardArtistContainerComponent } from './card-artist-container/card-artis
 
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardArtistComponent,
     CardArtistContainerComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
